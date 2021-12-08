@@ -18,11 +18,8 @@ fi
 
 SSH="$SSH_USERNAME@webik.ms.mff.cuni.cz"
 
-echo "Clearing out public_html folder on webik"
-ssh $SSH -p $SSH_PORT 'rm -rf public_html/*'
-
-echo "Copying over php/html files to webik"
-scp -r -P $SSH_PORT php/* $SSH:public_html/
+echo "Rsyncing php folder"
+rsync -r -e 'ssh -p '$SSH_PORT php/ $SSH:~/public_html/
 
 echo "Clearing out database"
 ssh $SSH -p $SSH_PORT "mysql -u $DB_USERNAME -p$DB_PASSWORD -e \"DROP DATABASE stud_$DB_USERNAME\""
