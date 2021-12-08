@@ -16,3 +16,11 @@ services:
       - ./php:/var/www/html
     ports:
       - 8080:80
+  phpmyadmin:
+    image: phpmyadmin:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      PMA_HOSTS: "db"
+    ports:
+      - 8081:80
