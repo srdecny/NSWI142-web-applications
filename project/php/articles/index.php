@@ -1,18 +1,13 @@
 <?php 
 	require_once '../db.php';
 	$db = new DB();
-	$rows = $db->get_article_list();
-	$articles = array();
-	while ($row = $rows->fetch_assoc()) {
-		$row['safe'] = htmlspecialchars($row['name']);
-		array_push($articles, $row);
-	}
+	$articles = $db->get_article_list();
 
 ?>
 <html>
 <head>
 	<title>Article list</title>
-	<link rel="stylesheet" href="/style/style.css" type="text/css">
+	<link rel="stylesheet" href="../style/style.css" type="text/css">
 </head>
 <body>
 	<div id="articleContainer">
@@ -23,11 +18,11 @@
 				foreach ($articles as $article) {
 					$line = <<<EOD
 						<div class="articleLine">
-							<div class="articleTitle">{$article['safe']}</div>
+							<div class="articleTitle">{$article['name']}</div>
 							<div class="articleControls">
-								<a class="showLink" href="/cms/article/{$article['id']}">Show</a>
-								<a class="editLink" href="/cms/article-edit/{$article['id']}">Edit</a>
-								<a class="deleteLink" href="/cms/articles/{$article['id']}">Delete</a>
+								<a class="showLink" href="./article/{$article['id']}">Show</a>
+								<a class="editLink" href="./article-edit/{$article['id']}">Edit</a>
+								<a class="deleteLink" href="./articles/{$article['id']}">Delete</a>
 							</div>
 						</div>
 					EOD;
@@ -40,9 +35,12 @@
 			<button class="button" onClick="previous()" id="previousButton">Previous</button>
 			<button class="button" onClick="next()" id="nextButton">Next</button>
 			<span id="pages"></span>
-			<button class="button" id="createButton">Create Article</button>
+			<button class="button" onClick="showDialog()" id="createButton">Create Article</button>
 		</div>
 	</div>
+	<dialog id="newArticleDialog">
+		<iframe id="iframe" onload="iframeHandler(this.contentWindow.location.href)" src="./article-edit/new"></iframe>
+	</dialog>
 </body>
 
 <script>
@@ -67,13 +65,28 @@
 		};
 
 		pages.innerHTML = `Page ${newIndex + 1 } of ${maxIndex + 1}`;
-		previousButton.style.display = newIndex === 0 ? 'hidden' : 'visible';
-		nextButton.style.display = newIndex === maxIndex ? 'hidden' : 'visible';
+		previousButton.style.display = newIndex === 0 ? 'none' : 'inline-block';
+		nextButton.style.display = newIndex === maxIndex ? 'none' : 'inline-block';
 	}
+	update(0)
 
 	const previous = () => update(--index);
 	const next = () => update(++index);
+	const showDialog = () => {
+		const dialog = document.getElementById('newArticleDialog');
+		dialog.showModal();
+	}
 
-	update(0)
+	const iframeHandler = (url) => {
+		if (url.includes('/article-edit/new')) {
+			return
+		} else if (url.includes('/article/')) {
+			window.location.href = url;
+		} else {
+			const dialog = document.getElementById('newArticleDialog');
+			dialog.close();
+			document.getElementById('iframe').src = './article-edit/new';
+		}
+	}
 
 </script>

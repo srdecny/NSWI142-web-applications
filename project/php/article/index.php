@@ -11,7 +11,7 @@
 <html>
 <head>
 	<title>Article list</title>
-	<link rel="stylesheet" href="/style/style.css" type="text/css">
+	<link rel="stylesheet" href="../../style/style.css" type="text/css">
 </head>
 <body>
 	<div id="articleContainer">
@@ -21,8 +21,8 @@
 		</div>
 		<hr>
 		<div id="controls">
-			<button id="editButton" onclick="location.href='/cms/article-edit/<?php echo $article_id; ?>'">Edit</button>
-			<button id="homeButton" onclick="location.href='/cms/articles'">Back to articles</button>
+			<button id="editButton" onclick="location.href='../article-edit/<?php echo $article_id; ?>'">Edit</button>
+			<button id="homeButton" onclick="location.href='../articles'">Back to articles</button>
 		</div>
 	</div>
 

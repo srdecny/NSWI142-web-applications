@@ -1,10 +1,9 @@
 RewriteEngine on
 
 RewriteCond %{REQUEST_METHOD} POST
-RewriteRule ^cms/article-edit/([0-9]+)$ article-edit/save.php [L]
+RewriteRule ^cms/article-edit/([0-9]+|new)$ article-edit/save.php [L]
 
 RewriteCond %{REQUEST_METHOD} GET
 RewriteRule ^cms/articles/?$ articles/index.php [L]
 RewriteRule ^cms/article/([0-9]+)$ article/index.php [L]
-RewriteRule ^cms/article-edit/([0-9]+)$ article-edit/index.php [L]
-RewriteRule ^cms/save/([0-9]+)$ save/index.php [L]
+RewriteRule ^cms/article-edit/([0-9]+)|new$ article-edit/index.php [L]
