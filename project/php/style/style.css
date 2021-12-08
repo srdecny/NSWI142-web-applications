@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Open+Sans&display=swap');
+
+* {
+	font-family: 'Open Sans', sans-serif;
+}
+
+body {
+	background-color: #d6dcef;
+}
+
+#articleContainer {
+	border: 2px solid black;
+	margin-left: 20vh;
+	margin-right: 20vh;
+}
+#articleTitle {
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	margin-left: 10px;
+}
+
+#articleList {
+	display: flex;
+	flex-direction: column;
+}
+
+#editForm {
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+}
+
+.articleLine {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.articleControls > div{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.editLink {
+	color: blue;
+}
+
+.showLink {
+	color: blue;
+}
+
+.deleteLink {
+	color: red;
+}
+
+#articleContent {
+	margin: 10px;
+}
+
+.article {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+#controls > button {
+	background-color: #efdad6;
+	margin: 5px;
+}

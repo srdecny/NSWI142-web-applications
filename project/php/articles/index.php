@@ -1,20 +1,37 @@
+<?php 
+	require_once '../db.php';
+	$db = new DB();
+	$rows = $db->get_article_list();
+	$articles = array();
+	while ($row = $rows->fetch_assoc()) {
+		$row['safe'] = htmlspecialchars($row['name']);
+		array_push($articles, $row);
+	}
+
+?>
 <html>
 <head>
 	<title>Article list</title>
-	<link rel="stylesheet" href="/style/main.css" type="text/css">
-	<link rel="stylesheet" href="/style/list.css" type="text/css">
+	<link rel="stylesheet" href="/style/style.css" type="text/css">
 </head>
 <body>
 	<div id="articleContainer">
 		<div id="articleTitle">Article list</div>
 		<hr>
 		<div id="articleList">
-			<?php 
-				require_once '../db.php';
-				$db = new DB();
-				$articles = $db->get_article_list();
+			<?php
 				foreach ($articles as $article) {
-					printf('<div class="article" id="article_%s">%s</div>', $article['id'], $article['name']);
+					$line = <<<EOD
+						<div class="articleLine">
+							<div class="articleTitle">{$article['safe']}</div>
+							<div class="articleControls">
+								<a class="showLink" href="/cms/article/{$article['id']}">Show</a>
+								<a class="editLink" href="/cms/article-edit/{$article['id']}">Edit</a>
+								<a class="deleteLink" href="/cms/articles/{$article['id']}">Delete</a>
+							</div>
+						</div>
+					EOD;
+					echo $line;
 				}
 			?>
 		</div>
@@ -45,7 +62,7 @@
 		for (let i = 0; i < ARTICLES_PER_PAGE; i++) {
 			const article = articleList.children[newIndex * ARTICLES_PER_PAGE + i];
 			if (article) {
-				article.style.display = 'block';
+				article.style.display = 'flex';
 			}
 		};
 

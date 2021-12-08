@@ -1,5 +1,6 @@
 INSERT INTO articles (name, content) 
-VALUES ('Article title', 'Article text'),
+VALUES ('Article title', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n
+Vivamus ac leo pretium faucibus. \nIn dapibus augue non sapien.'),
 			 ('Article title 2', 'Article text 2'),
 			 ('Article title 3', 'Article text 3'),
 			 ('Article title 4', 'Article text 4'),

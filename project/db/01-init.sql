@@ -1,6 +1,6 @@
 CREATE TABLE articles (
 	id int NOT NULL AUTO_INCREMENT,
-	name TEXT,
-	content TEXT,
+	name VARCHAR(32),
+	content VARCHAR(1024),
 	PRIMARY KEY (id)
 )
