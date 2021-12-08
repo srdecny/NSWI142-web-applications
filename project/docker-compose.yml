@@ -9,6 +9,7 @@ services:
       - ./db:/docker-entrypoint-initdb.d
     command: --default-authentication-plugin=mysql_native_password
   php:
+    hostname: "php_in_docker"
     build:
       context: ./php
     volumes:
