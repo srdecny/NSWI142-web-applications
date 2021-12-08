@@ -1,8 +1,8 @@
 <html>
 <head>
 	<title>Article list</title>
-	<link rel="stylesheet" href="../style/main.css" type="text/css">
-	<link rel="stylesheet" href="../style/list.css" type="text/css">
+	<link rel="stylesheet" href="/style/main.css" type="text/css">
+	<link rel="stylesheet" href="/style/list.css" type="text/css">
 </head>
 <body>
 	<div id="articleContainer">
