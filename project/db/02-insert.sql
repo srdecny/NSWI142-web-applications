@@ -1,1 +1,22 @@
-INSERT INTO test_table VALUES (1, 'foo')
+INSERT INTO articles (name, content) 
+VALUES ('Article title', 'Article text'),
+			 ('Article title 2', 'Article text 2'),
+			 ('Article title 3', 'Article text 3'),
+			 ('Article title 4', 'Article text 4'),
+			 ('Article title 5', 'Article text 5'),
+			 ('Article title 6', 'Article text 6'),
+			 ('Article title 7', 'Article text 7'),
+			 ('Article title 8', 'Article text 8'),
+			 ('Article title 9', 'Article text 9'),
+			 ('Article title 10', 'Article text 10'),
+			 ('Article title 11', 'Article text 11'),
+			 ('Article title 12', 'Article text 12'),
+			 ('Article title 13', 'Article text 13'),
+			 ('Article title 14', 'Article text 14'),
+			 ('Article title 15', 'Article text 15'),
+			 ('Article title 16', 'Article text 16'),
+			 ('Article title 17', 'Article text 17'),
+			 ('Article title 18', 'Article text 18'),
+			 ('Article title 19', 'Article text 19'),
+			 ('Article title 20', 'Article text 20'),
+			 ('Article title 21', 'Article text 21');

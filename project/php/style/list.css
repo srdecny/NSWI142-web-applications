@@ -1,0 +1,28 @@
+#articleContainer {
+	border: 2px solid black;
+	margin-left: 20vh;
+	margin-right: 20vh;
+}
+#articleTitle {
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	margin-left: 10px;
+}
+
+#articleList {
+	display: flex;
+	flex-direction: column;
+}
+
+
+.article {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+#controls > button {
+	background-color: #efdad6;
+	margin: 5px;
+}
