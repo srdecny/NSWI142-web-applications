@@ -49,7 +49,6 @@ class Db {
 	function get_article_list() {
 		$res = $this->query('SELECT id, name FROM articles');
 		return $this->sanitize_results($res, array('name'));
-
 	}
 
 	function get_article($article_id) {

@@ -1,5 +1,6 @@
 <?php
-	$article_id = end(explode("/", $_SERVER['REQUEST_URI']));
+	$params = explode("/", $_SERVER['REQUEST_URI']);
+	$article_id = end($params);
 	if ($article_id !== "new") {
 		require_once("../db.php");
 		$db = new DB();
@@ -8,6 +9,11 @@
 			http_response_code(404);
 			die();
 		}
+	} else {
+		$article = array(
+			"name" => "",
+			"content" => "",
+		);
 	}
 	$submit_label = $article_id == "new" ? "Create" : "Save";
 ?>

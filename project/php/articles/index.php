@@ -78,7 +78,6 @@
 		dialog.showModal();
 	}
 
-	// Yes, this is a giant hack. Too bad!
 	const iframeHandler = (url) => {
 		if (url.includes('/article-edit/new')) {
 			return
@@ -93,7 +92,7 @@
 
 	const deleteArticle = async (id) => {
 		document.getElementById(`line${id}`).remove();
-		await fetch(`/cms/article/${id}`, {
+		await fetch(`./article/${id}`, {
 			method: 'DELETE'
 		})
 		if ([...articleList.children].filter(e => e.style.display != 'none').length === 0) {
