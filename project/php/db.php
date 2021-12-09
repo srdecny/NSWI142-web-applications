@@ -76,6 +76,13 @@ class Db {
 		// THIS IS NOT GUARANTEED TO BE CORRECT! (but it's ok for our purposes)
 		return $this->query("select LAST_INSERT_ID()")->fetch_assoc()['LAST_INSERT_ID()'];
 	}
+
+	function delete_article($article_id) {
+		$this->validate_number($article_id);
+		$stmt = $this->conn->prepare('DELETE FROM articles WHERE id = ?');
+		$stmt->bind_param("i", $article_id);
+		$stmt->execute();
+	}
 }
 
 ?>

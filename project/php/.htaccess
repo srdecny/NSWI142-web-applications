@@ -1,5 +1,8 @@
 RewriteEngine on
 
+RewriteCond %{REQUEST_METHOD} DELETE
+RewriteRule ^cms/article/([0-9]+)$ article/delete.php [L]
+
 RewriteCond %{REQUEST_METHOD} POST
 RewriteRule ^cms/article-edit/([0-9]+|new)$ article-edit/save.php [L]
 
