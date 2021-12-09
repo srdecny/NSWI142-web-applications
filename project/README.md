@@ -21,6 +21,8 @@ The only way to update the database scema is to add a new SQL script and then re
 
 If you want to run the docker-compose in the background, use `docker-compose up -d` (the -d means detached). Stop it with `docker-compose down`.
 
+Make extra sure you're using relative paths in your links/ahrefs. The app is ran under `/~<your_name>` prefix on Webik, so absolute path will be broken there.
+
 # phpMyAdmin
 It runs on `localhost:8081`, username/pass: `root/root`.
 
