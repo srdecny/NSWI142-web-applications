@@ -38,9 +38,7 @@
 			<button class="button" onClick="showDialog()" id="createButton">Create Article</button>
 		</div>
 	</div>
-	<dialog id="newArticleDialog">
-		<iframe id="iframe" onload="iframeHandler(this.contentWindow.location.href)" src="./article-edit/new"></iframe>
-	</dialog>
+	<iframe id="newArticle" onload="iframeHandler(this.contentWindow.location.href)" src="./article-edit/new"></iframe>
 </body>
 
 <script>
@@ -48,6 +46,7 @@
 	const previousButton = document.getElementById('previousButton');
 	const nextButton = document.getElementById('nextButton');
 	const pagesSpan = document.getElementById('pages');
+	const dialog = document.getElementById('newArticle');
 
 	const ARTICLES_PER_PAGE = 10;
 	let index = 0;
@@ -74,8 +73,7 @@
 	const previous = () => update(--index);
 	const next = () => update(++index);
 	const showDialog = () => {
-		const dialog = document.getElementById('newArticleDialog');
-		dialog.showModal();
+		dialog.style.display = 'flex';
 	}
 
 	const iframeHandler = (url) => {
@@ -84,9 +82,8 @@
 		} else if (url.includes('/article/')) {
 			window.location.href = url;
 		} else {
-			const dialog = document.getElementById('newArticleDialog');
-			dialog.close();
-			document.getElementById('iframe').src = './article-edit/new';
+			dialog.style.display = 'none';
+			dialog.src = './article-edit/new';
 		}
 	}
 

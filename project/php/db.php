@@ -20,17 +20,17 @@ class Db {
 
 	protected function validate_number($str) {
 		if (!preg_match('/^\d+$/', $str)) {
-			throw new Exception("Invalid article id!");
+			die("Invalid article id!");
 		}
 	}
 
-	protected function validate_strings($name, $content) {
+	protected function validate_article_data($name, $content) {
 		if (!isset($name) || !isset($content)) {
-			throw new Exception("Invalid article data!");
+			die("Invalid article data!");
 		}
 
 		if (strlen($name) > 32 || strlen($content) > 1024) {
-			throw new Exception("Too long article data!");
+			die("Too long article data!");
 		}
 
 	}
@@ -61,14 +61,14 @@ class Db {
 
 	function update_article($article_id, $name, $content) {
 		$this->validate_number($article_id);
-		$this->validate_strings($name, $content);
+		$this->validate_article_data($name, $content);
 		$stmt = $this->conn->prepare('UPDATE articles SET name = (?), content = (?) WHERE id = (?)');
 		$stmt->bind_param("ssi", $name, $content, $article_id);
 		$stmt->execute();
 	}
 
 	function create_article($name, $content) {
-		$this->validate_strings($name, $content);
+		$this->validate_article_data($name, $content);
 		$stmt = $this->conn->prepare('INSERT INTO articles (name, content) VALUES (?, ?)');
 		$stmt->bind_param("ss", $name, $content);
 		$stmt->execute();

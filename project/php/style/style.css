@@ -79,3 +79,7 @@ iframe {
 	background-color: #efdad6;
 	margin: 5px;
 }
+
+#newArticle {
+	display: none;
+}
