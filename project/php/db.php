@@ -56,7 +56,12 @@ class Db {
 		$stmt = $this->conn->prepare('SELECT id, name, content FROM articles WHERE id = ?');
 		$stmt->bind_param("i", $article_id);
 		$stmt->execute();
-		return $this->sanitize_results($stmt->get_result(), array('name', 'content'))[0];
+		$res = $this->sanitize_results($stmt->get_result(), array('name', 'content'));
+		if ($res) {
+			return $res[0];
+		} else {
+			http_response_code(404);
+		}
 	}
 
 	function update_article($article_id, $name, $content) {

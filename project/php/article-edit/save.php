@@ -13,7 +13,4 @@
 		$db->update_article($article_id, $name, $content);
 		header("Location: ../articles", true, 302);
 	}
-
-
-
 ?>
